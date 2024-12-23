@@ -24,10 +24,10 @@ function populateUI() {
 
   // event listener for floatButton
   floatButton.addEventListener('click', () => {
-    if (chatBox.style.display === 'block') {
+    if (chatBox.style.display === 'flex') {
       chatBox.style.display = 'none';
     } else {
-      chatBox.style.display = 'block';
+      chatBox.style.display = 'flex';
     }
   })
 
@@ -45,10 +45,10 @@ function populateUI() {
   minButton.classList.add('min-btn');
   minButton.appendChild(arrowIcon);
   minButton.addEventListener('click', () => {
-    if (chatBox.style.display === 'block') {
+    if (chatBox.style.display === 'flex') {
       chatBox.style.display = 'none';
     } else {
-      chatBox.style.display = 'block';
+      chatBox.style.display = 'flex';
     }
   })
 
@@ -66,15 +66,21 @@ function populateUI() {
   chatHeader.appendChild(headerLogo)
   chatHeader.appendChild(headerText)
 
+   // Chat body for messages
+   const chatBody = document.createElement('div');
+   chatBody.classList.add('chat-body');
+   chatBox.appendChild(chatBody);
+
   // input and send button div
 
   const inputDiv = document.createElement('div');
   inputDiv.classList.add('input-div');
   chatBox.appendChild(inputDiv)
 
-  const chatInput = document.createElement('input');
+  const chatInput = document.createElement('div');
   chatInput.classList.add('chat-input')
-  chatInput.placeholder = 'Type a reply...'
+  chatInput.setAttribute('contenteditable', 'true');
+  chatInput.setAttribute('placeholder', 'Type a reply...');
 
   const chatButton = document.createElement('button')
   chatButton.classList.add('chat-button')
@@ -85,5 +91,39 @@ function populateUI() {
 
   inputDiv.appendChild(chatInput)
   inputDiv.appendChild(chatButton)
+
+  chatButton.addEventListener('click', () => {
+    const userMessage = chatInput.textContent.trim();
+    if (userMessage) {
+      appendMessage('user', userMessage);
+      chatInput.textContent = ''; // Clear input
+      setTimeout(() => {
+        appendMessage('bot', 'Hello! How can I assist you?'); // Simulate bot response
+      }, 500); // Delay for realism
+    }
+  });
+
+  // Function to append messages
+  function appendMessage(sender, message) {
+    const messageDiv = document.createElement('div');
+    messageDiv.classList.add(`${sender}-message`);
+    if(sender === 'bot'){
+      const botDp = document.createElement('img')
+      botDp.src = './assets/bot-dp.svg'
+      messageDiv.appendChild(botDp)
+      
+      const botResponse = document.createElement('span')
+      botResponse.textContent = message
+      messageDiv.appendChild(botResponse)
+      
+      chatBody.appendChild(messageDiv)
+    } else {
+
+      messageDiv.textContent = message;
+      chatBody.appendChild(messageDiv);
+      chatBody.scrollTop = chatBody.scrollHeight; // Scroll to the latest message
+    }
+    
+  }
 
 }
