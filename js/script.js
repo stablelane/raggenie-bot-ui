@@ -6,7 +6,7 @@
 
   const buttonIcon = document.createElement('img');
   buttonIcon.classList.add('button-icon');
-  buttonIcon.src = './arrow.png';
+  buttonIcon.src = '../assets/arrow.png';
   floatButton.appendChild(buttonIcon); 
 
   // chatbox display=none(initially)
@@ -33,24 +33,24 @@
 
   const minButton = document.createElement('button');
   const arrowIcon = document.createElement('img');
-  arrowIcon.src = './arrow.png'; 
+  arrowIcon.src = '../assets/arrow.png'; 
   arrowIcon.alt = 'Minimize';
   minButton.classList.add('min-btn');
   minButton.appendChild(arrowIcon);
   
     // Vector images between the minButton and headerText
   const vector = document.createElement('img');
-  vector.src = './Vector.png'; 
+  vector.src = '../assets/Vector.png'; 
   vector.alt = 'Vector ';
   vector.classList.add('vector');
 
   const vector1 = document.createElement('img');
-  vector1.src = './Vector1.png'; 
+  vector1.src = '../assets/Vector1.png'; 
   vector1.alt = 'Vector 1';
   vector1.classList.add('vector-1');
 
   const vector2 = document.createElement('img');
-  vector2.src = './Vector2.png'; 
+  vector2.src = '../assets/Vector2.png'; 
   vector2.alt = 'Vector 2';
   vector2.classList.add('vector-2');
 
@@ -76,7 +76,7 @@
   const chatButton = document.createElement('button')
   chatButton.classList.add('chat-button')
   const sendIcon = document.createElement('img');
-  sendIcon.src = './send.png'; 
+  sendIcon.src = '../assets/send.png'; 
   sendIcon.alt = 'send';
   chatButton.appendChild(sendIcon);
 
