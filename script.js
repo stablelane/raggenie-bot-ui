@@ -35,26 +35,29 @@
   minButton.appendChild(svgIcon);
   
     // Vector images between the minButton and headerText
+  const vector = document.createElement('img');
+  vector.src = './Vector.png'; 
+  vector.alt = 'Vector ';
+  vector.classList.add('vector');
+
   const vector1 = document.createElement('img');
-  vector1.src = './Vector.png'; 
-  vector1.alt = 'Vector ';
-  vector1.classList.add('vector');
+  vector1.src = './Vector1.png'; 
+  vector1.alt = 'Vector 1';
+  vector1.classList.add('vector-1');
 
   const vector2 = document.createElement('img');
-  vector2.src = './vector1.png'; 
-  vector2.alt = 'Vector 1';
-  vector2.classList.add('vector');
-
-  const vector3 = document.createElement('img');
-  vector3.src = './Vector2.png'; 
-  vector3.alt = 'Vector 2';
-  vector3.classList.add('vector');
+  vector2.src = './Vector2.png'; 
+  vector2.alt = 'Vector 2';
+  vector2.classList.add('vector-2');
 
   const headerText = document.createElement('span');
   headerText.textContent = 'Assistant';
   headerText.classList.add('header-text');
 
   chatHeader.appendChild(minButton)
+  chatHeader.appendChild(vector)
+  chatHeader.appendChild(vector1)
+  chatHeader.appendChild(vector2)
   chatHeader.appendChild(headerText)
 
   // input and button div
