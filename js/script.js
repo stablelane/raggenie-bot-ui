@@ -92,6 +92,9 @@ function populateUI() {
   inputDiv.appendChild(chatInput)
   inputDiv.appendChild(chatButton)
 
+  const messageWrapper = document.createElement('div');
+  messageWrapper.classList.add('message-wrapper');
+
   chatButton.addEventListener('click', () => {
     const userMessage = chatInput.textContent.trim();
     if (userMessage) {
@@ -105,8 +108,10 @@ function populateUI() {
 
   // Function to append messages
   function appendMessage(sender, message) {
+ 
     const messageDiv = document.createElement('div');
     messageDiv.classList.add(`${sender}-message`);
+
     if(sender === 'bot'){
       const botDp = document.createElement('img')
       botDp.src = './assets/bot-dp.svg'
@@ -115,13 +120,15 @@ function populateUI() {
       const botResponse = document.createElement('span')
       botResponse.textContent = message
       messageDiv.appendChild(botResponse)
-      
-      chatBody.appendChild(messageDiv)
+
+      messageWrapper.appendChild(messageDiv)
+      chatBody.appendChild(messageWrapper)
+      chatBody.scrollTop = chatBody.scrollHeight; // Scroll to the latest message
     } else {
 
       messageDiv.textContent = message;
-      chatBody.appendChild(messageDiv);
-      chatBody.scrollTop = chatBody.scrollHeight; // Scroll to the latest message
+      messageWrapper.appendChild(messageDiv);
+      chatBody.appendChild(messageWrapper)
     }
     
   }
