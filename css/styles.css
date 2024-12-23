@@ -49,6 +49,8 @@ body {
     border-radius: 18px 18px 0px 0px;
     box-sizing: border-box;
     opacity: 0px;
+    display: flex;
+    align-items: center;
 
   }
   .min-btn {
@@ -56,40 +58,18 @@ body {
     border: none;
     color: #F8F8F8;
     cursor: pointer;
-    margin-right: 10px;
-
-  }
-  .chat-header img {
-
-  }
-  .vector-1 {
-    position: absolute;
-    width: 4.76px;
-    height: 3.81px;
-    top: 17px;
-    left: 62px;
-    gap: 0px;
-    opacity: 0px;
-    transform: rotate(180deg);
-
+    margin-right: 15px;
+    padding: none;
   }
 
-  .vector-2 {
-    position: absolute;
-    left: 62px;
-    top: 14px;
-  }
+
   .header-text {
-    color: #FFFFFF;
+    color: #FFF;
+    font-feature-settings: 'ss01' on, 'cv01' on, 'cv11' on;
     font-family: Inter;
     font-size: 18px;
+    font-style: normal;
     font-weight: 600;
-    line-height: 20px;
-    text-align: left;
-    text-underline-position: from-font;
-    text-decoration-skip-ink: none;
-    position: absolute;
-    padding-left: 5px;
   }
 
   .input-div {

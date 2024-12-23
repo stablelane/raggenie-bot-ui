@@ -6,7 +6,7 @@
 
   const buttonIcon = document.createElement('img');
   buttonIcon.classList.add('button-icon');
-  buttonIcon.src = '../assets/arrow.png';
+  buttonIcon.src = '../assets/arrow.svg';
   floatButton.appendChild(buttonIcon); 
 
   // chatbox display=none(initially)
@@ -15,7 +15,7 @@
   chatBox.style.display = 'none';
   document.body.appendChild(chatBox);
   
-  //toggle visibility of chatbox
+
 
   floatButton.addEventListener('click', () => {
     if (chatBox.style.display === 'block') {
@@ -33,35 +33,23 @@
 
   const minButton = document.createElement('button');
   const arrowIcon = document.createElement('img');
-  arrowIcon.src = '../assets/arrow.png'; 
+  arrowIcon.src = '../assets/arrow.svg'; 
   arrowIcon.alt = 'Minimize';
   minButton.classList.add('min-btn');
   minButton.appendChild(arrowIcon);
   
-    // Vector images between the minButton and headerText
-  const vector = document.createElement('img');
-  vector.src = '../assets/Vector.png'; 
-  vector.alt = 'Vector ';
-  vector.classList.add('vector');
+  // headerlogo
+  const headerLogo = document.createElement('img');
+  headerLogo.src = '../assets/logo.svg'
+  headerLogo.classList.add('header-logo')
 
-  const vector1 = document.createElement('img');
-  vector1.src = '../assets/Vector1.png'; 
-  vector1.alt = 'Vector 1';
-  vector1.classList.add('vector-1');
-
-  const vector2 = document.createElement('img');
-  vector2.src = '../assets/Vector2.png'; 
-  vector2.alt = 'Vector 2';
-  vector2.classList.add('vector-2');
-
+  // header text(assistant)
   const headerText = document.createElement('span');
   headerText.textContent = 'Assistant';
   headerText.classList.add('header-text');
 
   chatHeader.appendChild(minButton)
-  chatHeader.appendChild(vector)
-  chatHeader.appendChild(vector1)
-  chatHeader.appendChild(vector2)
+  chatHeader.appendChild(headerLogo)
   chatHeader.appendChild(headerText)
 
   // input and button div
