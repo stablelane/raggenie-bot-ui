@@ -122,7 +122,15 @@ function populateUI() {
       messageDiv.appendChild(botResponse)
 
       messageWrapper.appendChild(messageDiv)
+      
+      const botResponseBody = document.createElement('div');
+      botResponseBody.classList.add('botresponse-body')
+      botResponseBody.innerHTML = "Event ID: 4624 <br> Log Name: Security  <br>Source: Microsoft-Windows-Security-Auditing <br> Date: 2024-07-24 03:15:00  <br>Task Category: Logon<br> Computer: server01.contoso.com Logon"
+      messageWrapper.appendChild(botResponseBody)
+      
       chatBody.appendChild(messageWrapper)
+
+
       chatBody.scrollTop = chatBody.scrollHeight; // Scroll to the latest message
     } else {
 

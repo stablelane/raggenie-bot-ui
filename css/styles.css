@@ -81,6 +81,11 @@ body {
     box-sizing: border-box;
     height: calc(100% - 112px); 
     background-color: white;
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 180%;
   }
   .message-wrapper {
     margin-top: auto;
@@ -91,7 +96,8 @@ body {
 }
 
   .user-message,
-  .bot-message {
+  .bot-message,
+  .botresponse-body {
     word-wrap: break-word;
     padding: 12px;
     border-radius: 10px;
@@ -111,6 +117,13 @@ body {
     align-items: center;
     gap: 10px;
     align-self: flex-start;
+  }
+  .botresponse-body {
+    align-self: flex-end;
+    border-radius: 4px;
+    background: #F3FAFF;
+    width: 342px;
+    padding: 6px 15px;
   }
 
   .input-div {
