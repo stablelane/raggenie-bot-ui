@@ -6,14 +6,18 @@ body {
   
   /* floating button */
   .float-button {
+    width: 60px;
+    height: 60px;
+    padding: 19.41px;
+    gap: 0px;
+    border-radius: 100px;
+    opacity: 0px;
     position: fixed;
     bottom: 20px;
     right: 20px;
-    padding: 10px 15px;
-    background-color: #007bff;
+    background-color: #3893FF;
     color: white;
     border: none;
-    border-radius: 5px;
     cursor: pointer;
     z-index: 1000;
   }
@@ -21,33 +25,82 @@ body {
   
   .chat-box {
     position: fixed;
-    bottom: 70px;
+    width: 423px;
+    height: 781px;
+    bottom: 90px;
     right: 20px;
-    width: 300px;
-    height: 400px;
     border: 1px solid #ccc;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px black;
+    border-radius: 18px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     background-color: white;
     z-index: 1001;
     display: none;
     flex-direction: column;
   }
 
+  .chat-header {
+    background-color: #3893FF;
+    height: 58px;
+    padding: 20px;
+    border-radius: 18px 18px 0px 0px;
+    box-sizing: border-box;
+    opacity: 0px;
+
+  }
+  .min-btn {
+    background: none;
+    border: none;
+    color: #F8F8F8;
+    cursor: pointer;
+
+  }
+
+  .header-text {
+    color: #FFFFFF;
+    font-family: Inter;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 20px;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    padding-left: 15px;
+  }
+
   .input-div {
+    box-sizing: border-box;
+    width: 423px;
+    height: 54px;
+    padding: 15px 20px 15px 20px;
+    gap: 30px;
+    opacity: 0px;
     position: absolute;
     bottom: 0;
     left: 0;
     width: 100%;
     display: flex;
     justify-content: space-between;
+    border-top: 1px solid rgb(219, 219, 219);
   }
 
   .chat-input {
-    width: 80%;
+    border: none;
+  }
+
+  .chat-input::placeholder {
+    color: #737376;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 20.25px;
+
   }
 
   .chat-button {
-    width: 20%;
-    
+    background: none;
+    border: none;
+    cursor: pointer;
+
+  }
+  .chat-button img {
+    filter: grayscale(100%) brightness(50%);
   }
