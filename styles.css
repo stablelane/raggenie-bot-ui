@@ -22,6 +22,10 @@ body {
     z-index: 1000;
   }
   
+  .button-icon {
+    transform: rotate(90deg);
+
+  }
   
   .chat-box {
     position: fixed;

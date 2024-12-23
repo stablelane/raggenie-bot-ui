@@ -1,9 +1,13 @@
 (function () {
      // Create floating button
   const floatButton = document.createElement('button');
-  floatButton.textContent = '^';
   floatButton.classList.add('float-button'); 
   document.body.appendChild(floatButton);
+
+  const buttonIcon = document.createElement('img');
+  buttonIcon.classList.add('button-icon');
+  buttonIcon.src = './arrow.png';
+  floatButton.appendChild(buttonIcon); 
 
   // chatbox display=none(initially)
   const chatBox = document.createElement('div');
@@ -28,11 +32,11 @@
   chatBox.appendChild(chatHeader);
 
   const minButton = document.createElement('button');
-  const svgIcon = document.createElement('img');
-  svgIcon.src = './arrow.png'; 
-  svgIcon.alt = 'Minimize';
+  const arrowIcon = document.createElement('img');
+  arrowIcon.src = './arrow.png'; 
+  arrowIcon.alt = 'Minimize';
   minButton.classList.add('min-btn');
-  minButton.appendChild(svgIcon);
+  minButton.appendChild(arrowIcon);
   
     // Vector images between the minButton and headerText
   const vector = document.createElement('img');
