@@ -71,24 +71,24 @@ function populateUI() {
   chatBody.classList.add('chat-body');
   chatBox.appendChild(chatBody);
 
-  // action button 
+  // // action button 
 
-  const actionDiv = document.createElement('div');
-  actionDiv.classList.add('action-div');
-  chatBox.appendChild(actionDiv);
-  addActionBtn('./assets/zap.svg', 'Generate Query');
-  addActionBtn('./assets/search-lg.svg', 'Search from Splunk');
-  addActionBtn('./assets/search-lg.svg', 'Search CVE');
+  // const actionDiv = document.createElement('div');
+  // actionDiv.classList.add('action-div');
+  // chatBox.appendChild(actionDiv);
+  // addActionBtn('./assets/zap.svg', 'Generate Query');
+  // addActionBtn('./assets/search-lg.svg', 'Search from Splunk');
+  // addActionBtn('./assets/search-lg.svg', 'Search CVE');
 
-  function addActionBtn(logoPath, action) {
-    const actionBtn = document.createElement('button');
-    actionBtn.classList.add('action-btn');
-    const actionBtnlogo = document.createElement('img');
-    actionBtnlogo.src = logoPath;
-    actionBtn.textContent = action;
-    actionBtn.appendChild(actionBtnlogo);
-    actionDiv.appendChild(actionBtn); 
-  };
+  // function addActionBtn(logoPath, action) {
+  //   const actionBtn = document.createElement('button');
+  //   actionBtn.classList.add('action-btn');
+  //   const actionBtnlogo = document.createElement('img');
+  //   actionBtnlogo.src = logoPath;
+  //   actionBtn.textContent = action;
+  //   actionBtn.appendChild(actionBtnlogo);
+  //   actionDiv.appendChild(actionBtn); 
+  // };
 
   // input and send button div
 
@@ -104,72 +104,74 @@ function populateUI() {
   chatInput.addEventListener('keydown', (e) => {
     if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault();
-      simulate();
+      simulate(chatInput, chatBody);
     } 
   })
-
+  // message send button
   const chatButton = document.createElement('button')
   chatButton.classList.add('chat-button')
   const sendIcon = document.createElement('img');
   sendIcon.src = '../assets/send.png';
   sendIcon.alt = 'send';
   chatButton.appendChild(sendIcon);
-
+  chatButton.addEventListener('click', () =>  simulate(chatInput, chatBody));
+  
+  
   inputDiv.appendChild(chatInput)
   inputDiv.appendChild(chatButton)
+
+
+  
+}
+
+
+// simulate bot response and chat input
+function simulate(chatInput, chatBody) {
+  const userMessage = chatInput.textContent.trim();
+  if (userMessage) {
+    appendMessage('user', userMessage, chatBody);
+    chatInput.textContent = ''; // Clear input
+    setTimeout(() => {
+      appendMessage('bot', 'Hello! How can I assist you?', chatBody); // Simulate bot response
+    }, 500); // Delay for realism
+  }
+
+}
+
+// Function to append messages
+function appendMessage(sender, message, chatBody) {
 
   const messageWrapper = document.createElement('div');
   messageWrapper.classList.add('message-wrapper');
 
+  const messageDiv = document.createElement('div');
+  messageDiv.classList.add(`${sender}-message`);
 
-  // simulate bot response and chat input
-  chatButton.addEventListener('click', simulate);
+  if (sender === 'bot') {
+    const botDp = document.createElement('img')
+    botDp.src = './assets/bot-dp.svg'
+    messageDiv.appendChild(botDp)
 
-  function simulate() {
-    const userMessage = chatInput.textContent.trim();
-    if (userMessage) {
-      appendMessage('user', userMessage);
-      chatInput.textContent = ''; // Clear input
-      setTimeout(() => {
-        appendMessage('bot', 'Hello! How can I assist you?'); // Simulate bot response
-      }, 500); // Delay for realism
-    }
+    const botResponse = document.createElement('span')
+    botResponse.textContent = message
+    messageDiv.appendChild(botResponse)
 
-  }
+    messageWrapper.appendChild(messageDiv)
 
-  // Function to append messages
-  function appendMessage(sender, message) {
-
-    const messageDiv = document.createElement('div');
-    messageDiv.classList.add(`${sender}-message`);
-
-    if (sender === 'bot') {
-      const botDp = document.createElement('img')
-      botDp.src = './assets/bot-dp.svg'
-      messageDiv.appendChild(botDp)
-
-      const botResponse = document.createElement('span')
-      botResponse.textContent = message
-      messageDiv.appendChild(botResponse)
-
-      messageWrapper.appendChild(messageDiv)
-
-      const botResponseBody = document.createElement('div');
-      botResponseBody.classList.add('botresponse-body')
-      botResponseBody.innerHTML = "Event ID: 4624 <br> Log Name: Security  <br>Source: Microsoft-Windows-Security-Auditing <br> Date: 2024-07-24 03:15:00  <br>Task Category: Logon<br> Computer: server01.contoso.com Logon"
-      messageWrapper.appendChild(botResponseBody)
-      
-      chatBody.appendChild(messageWrapper)
-      chatBody.scrollTop = chatBody.scrollHeight; // Scroll to the latest message
-      
-
-    } else {
-
-      messageDiv.textContent = message;
-      messageWrapper.appendChild(messageDiv);
-      chatBody.appendChild(messageWrapper)
-    }
+    const botResponseBody = document.createElement('div');
+    botResponseBody.classList.add('botresponse-body')
+    botResponseBody.innerHTML = "Event ID: 4624 <br> Log Name: Security  <br>Source: Microsoft-Windows-Security-Auditing <br> Date: 2024-07-24 03:15:00  <br>Task Category: Logon<br> Computer: server01.contoso.com Logon"
+    messageWrapper.appendChild(botResponseBody)
     
-  }
+    chatBody.appendChild(messageWrapper)
+    chatBody.scrollTop = chatBody.scrollHeight; // Scroll to the latest message
+    
 
+  } else {
+
+    messageDiv.textContent = message;
+    messageWrapper.appendChild(messageDiv);
+    chatBody.appendChild(messageWrapper)
+  }
+  
 }
