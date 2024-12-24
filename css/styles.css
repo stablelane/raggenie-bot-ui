@@ -153,6 +153,8 @@ body {
     font-size: 16px;
     word-wrap: break-word; /* Break long words onto the next line */
     white-space: pre-wrap;
+    display: flex;
+    align-items: center;
   }
 
   .chat-input:empty::before {

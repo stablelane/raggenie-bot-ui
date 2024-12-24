@@ -66,10 +66,10 @@ function populateUI() {
   chatHeader.appendChild(headerLogo)
   chatHeader.appendChild(headerText)
 
-   // Chat body for messages
-   const chatBody = document.createElement('div');
-   chatBody.classList.add('chat-body');
-   chatBox.appendChild(chatBody);
+  // Chat body for messages
+  const chatBody = document.createElement('div');
+  chatBody.classList.add('chat-body');
+  chatBox.appendChild(chatBody);
 
   // input and send button div
 
@@ -95,6 +95,8 @@ function populateUI() {
   const messageWrapper = document.createElement('div');
   messageWrapper.classList.add('message-wrapper');
 
+
+  // simulate bot response and chat input
   chatButton.addEventListener('click', () => {
     const userMessage = chatInput.textContent.trim();
     if (userMessage) {
@@ -108,21 +110,21 @@ function populateUI() {
 
   // Function to append messages
   function appendMessage(sender, message) {
- 
+
     const messageDiv = document.createElement('div');
     messageDiv.classList.add(`${sender}-message`);
 
-    if(sender === 'bot'){
+    if (sender === 'bot') {
       const botDp = document.createElement('img')
       botDp.src = './assets/bot-dp.svg'
       messageDiv.appendChild(botDp)
-      
+
       const botResponse = document.createElement('span')
       botResponse.textContent = message
       messageDiv.appendChild(botResponse)
 
       messageWrapper.appendChild(messageDiv)
-      
+
       const botResponseBody = document.createElement('div');
       botResponseBody.classList.add('botresponse-body')
       botResponseBody.innerHTML = "Event ID: 4624 <br> Log Name: Security  <br>Source: Microsoft-Windows-Security-Auditing <br> Date: 2024-07-24 03:15:00  <br>Task Category: Logon<br> Computer: server01.contoso.com Logon"
