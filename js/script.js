@@ -71,24 +71,12 @@ function populateUI() {
   chatBody.classList.add('chat-body');
   chatBox.appendChild(chatBody);
 
-  // // action button 
+  // action button 
 
-  // const actionDiv = document.createElement('div');
-  // actionDiv.classList.add('action-div');
-  // chatBox.appendChild(actionDiv);
-  // addActionBtn('./assets/zap.svg', 'Generate Query');
-  // addActionBtn('./assets/search-lg.svg', 'Search from Splunk');
-  // addActionBtn('./assets/search-lg.svg', 'Search CVE');
-
-  // function addActionBtn(logoPath, action) {
-  //   const actionBtn = document.createElement('button');
-  //   actionBtn.classList.add('action-btn');
-  //   const actionBtnlogo = document.createElement('img');
-  //   actionBtnlogo.src = logoPath;
-  //   actionBtn.textContent = action;
-  //   actionBtn.appendChild(actionBtnlogo);
-  //   actionDiv.appendChild(actionBtn); 
-  // };
+  // addActionBtn('./assets/zap.svg', 'Generate Query', chatBox);
+  // addActionBtn('./assets/search-lg.svg', 'Search from Splunk', chatBox);
+  // addActionBtn('./assets/search-lg.svg', 'Search CVE', chatBox);
+  
 
   // input and send button div
 
@@ -175,3 +163,19 @@ function appendMessage(sender, message, chatBody) {
   }
   
 }
+
+//function to add action button
+// function addActionBtn(logoPath, action, chatBox) {
+    
+//   const actionDiv = document.createElement('div');
+//   actionDiv.classList.add('action-div');
+//   chatBox.appendChild(actionDiv);
+
+//   const actionBtn = document.createElement('button');
+//   actionBtn.classList.add('action-btn');
+//   const actionBtnlogo = document.createElement('img');
+//   actionBtnlogo.src = logoPath;
+//   actionBtn.textContent = action;
+//   actionBtn.appendChild(actionBtnlogo);
+//   actionDiv.appendChild(actionBtn); 
+// };
