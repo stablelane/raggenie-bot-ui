@@ -71,6 +71,25 @@ function populateUI() {
   chatBody.classList.add('chat-body');
   chatBox.appendChild(chatBody);
 
+  // action button 
+
+  const actionDiv = document.createElement('div');
+  actionDiv.classList.add('action-div');
+  chatBox.appendChild(actionDiv);
+  addActionBtn('./assets/zap.svg', 'Generate Query');
+  addActionBtn('./assets/search-lg.svg', 'Search from Splunk');
+  addActionBtn('./assets/search-lg.svg', 'Search CVE');
+
+  function addActionBtn(logoPath, action) {
+    const actionBtn = document.createElement('button');
+    actionBtn.classList.add('action-btn');
+    const actionBtnlogo = document.createElement('img');
+    actionBtnlogo.src = logoPath;
+    actionBtn.textContent = action;
+    actionBtn.appendChild(actionBtnlogo);
+    actionDiv.appendChild(actionBtn); 
+  };
+
   // input and send button div
 
   const inputDiv = document.createElement('div');
@@ -81,6 +100,13 @@ function populateUI() {
   chatInput.classList.add('chat-input')
   chatInput.setAttribute('contenteditable', 'true');
   chatInput.setAttribute('placeholder', 'Type a reply...');
+
+  chatInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      simulate();
+    } 
+  })
 
   const chatButton = document.createElement('button')
   chatButton.classList.add('chat-button')
@@ -97,7 +123,9 @@ function populateUI() {
 
 
   // simulate bot response and chat input
-  chatButton.addEventListener('click', () => {
+  chatButton.addEventListener('click', simulate);
+
+  function simulate() {
     const userMessage = chatInput.textContent.trim();
     if (userMessage) {
       appendMessage('user', userMessage);
@@ -106,7 +134,8 @@ function populateUI() {
         appendMessage('bot', 'Hello! How can I assist you?'); // Simulate bot response
       }, 500); // Delay for realism
     }
-  });
+
+  }
 
   // Function to append messages
   function appendMessage(sender, message) {
@@ -127,13 +156,13 @@ function populateUI() {
 
       const botResponseBody = document.createElement('div');
       botResponseBody.classList.add('botresponse-body')
-      botResponseBody.innerHTML = "Event ID: 4624 <br> Log Name: Security  <br>Source: Microsoft-Windows-Security-Auditing <br> Date: 2024-07-24 03:15:00  <br>Task Category: Logon<br> Computer: server01.contoso.com Logon"
+      botResponseBody.innerHTML = "Event ID: 4624 <br> Log Name: Security  <br>Source: Microsoft-Windows-Security-Auditing <br> Date: 2024-07-24 03:15:00  <br>Task Category: Logon<br> Computer: server01.contoso.com Logon"
       messageWrapper.appendChild(botResponseBody)
       
       chatBody.appendChild(messageWrapper)
-
-
       chatBody.scrollTop = chatBody.scrollHeight; // Scroll to the latest message
+      
+
     } else {
 
       messageDiv.textContent = message;

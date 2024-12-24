@@ -126,6 +126,33 @@ body {
     background: #F3FAFF;
     width: 342px;
     padding: 6px 15px;
+    margin-bottom: 10px;
+  }
+
+  .action-div {
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap-reverse;
+    gap: 10px;
+  }
+
+  .action-div button {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    flex-direction: row-reverse;
+    height: 30px;
+    padding: 3px 13px;
+    border: none;
+    border-radius: 100px;
+    background: #F1F1F1;
+    color: #323232;
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 150%; /* 21px */
+    cursor: pointer;
   }
 
   .input-div {
@@ -164,9 +191,6 @@ body {
     display: block;
   }
 
-  .chat-input:focus::before {
-    content: '';
-  }
 
 
   .chat-button {
